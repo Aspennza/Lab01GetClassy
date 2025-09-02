@@ -14,8 +14,8 @@ public class PersonGenerator
      */
     public static void main(String[] args)
     {
-         //This ArrayList holds a list of all person records input by the user
-        ArrayList<String> people = new ArrayList<>();
+        //This ArrayList holds a list of all person records input by the user
+        ArrayList<Person> people = new ArrayList<>();
 
          //This Scanner takes all user input
         Scanner in = new Scanner(System.in);
@@ -55,14 +55,14 @@ public class PersonGenerator
             title = SafeInput.getNonZeroLenString(in, "Please enter the title for your record");
             YOB = SafeInput.getRangedInt(in, "Please enter the year of birth for your record [4 digits]", 1000, 9999);
 
-            personRec = ID + ", " + firstName + ", " + lastName + ", " + title + ", " + YOB;
-            people.add(personRec);
+            Person person = new Person(ID, firstName, lastName, title, YOB);
+            people.add(person);
 
             done = SafeInput.getYNConfirm(in, "Have you finished entering records?");
         }while(!done);
 
          //This algorithm prints each record in the people ArrayList to the console
-        for (String p : people)
+        for (Person p : people)
         {
             System.out.println(p);
         }

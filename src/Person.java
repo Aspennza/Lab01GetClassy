@@ -1,3 +1,7 @@
+import java.util.Objects;
+
+//WRITE JAVADOC!!
+
 public class Person
 {
     private String ID;
@@ -61,5 +65,14 @@ public class Person
                 ", title='" + title + '\'' +
                 ", YOB=" + YOB +
                 '}';
+    }
+
+    //RESEARCH EQUALS() OVERRIDE; look at CP II videos, look at Prof's thursday Zoom lecture
+
+    public String fullName()
+    {
+        String fullName = "";
+        fullName = getFirstName() + " " + getLastName();
+        return fullName;
     }
 }

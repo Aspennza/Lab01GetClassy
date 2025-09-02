@@ -53,7 +53,7 @@ public class PersonGenerator
             firstName = SafeInput.getNonZeroLenString(in, "Please enter the first name for your record");
             lastName = SafeInput.getNonZeroLenString(in, "Please enter the last name for your record");
             title = SafeInput.getNonZeroLenString(in, "Please enter the title for your record");
-            YOB = SafeInput.getRangedInt(in, "Please enter the year of birth for your record [4 digits]", 1000, 9999);
+            YOB = SafeInput.getRangedInt(in, "Please enter the year of birth for your record [4 digits]", 1940, 2010);
 
             Person person = new Person(ID, firstName, lastName, title, YOB);
             people.add(person);

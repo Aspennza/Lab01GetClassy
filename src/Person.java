@@ -14,4 +14,52 @@ public class Person
         this.title = title;
         this.YOB = YOB;
     }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getID() {
+        return ID;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public int getYOB() {
+        return YOB;
+    }
+
+    //May not need a setter for YOB? I'll decide later.
+    public void setYOB(int YOB) {
+        this.YOB = YOB;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", ID='" + ID + '\'' +
+                ", title='" + title + '\'' +
+                ", YOB=" + YOB +
+                '}';
+    }
 }

@@ -7,6 +7,8 @@ import java.util.Scanner;
 
 import static java.nio.file.StandardOpenOption.CREATE;
 
+//WRITE COMMENTS FOR NEW VARIABLES
+
 public class PersonGenerator
 {
     /**
@@ -29,8 +31,7 @@ public class PersonGenerator
          //This boolean holds the true/false value that determines if the user continues or stops entering records
         boolean done = false;
 
-         //This String holds the finished comma-separated list of each person's ID, firstName, lastName, title, and YOB
-        String personRec = "";
+        String csv = "";
 
          //This String holds the 6-digit ID of each person record input by the user
         String ID = "";
@@ -64,6 +65,7 @@ public class PersonGenerator
          //This algorithm prints each record in the people ArrayList to the console
         for (Person p : people)
         {
+            System.out.println();
             System.out.println(p);
         }
 
@@ -78,7 +80,6 @@ public class PersonGenerator
              //This algorithm writes each record in the people ArrayList into the PersonTestData.txt file
             for(Person p : people)
             {
-                String csv = "";
                 csv = p.toCSV();
 
                 writer.write(csv, 0, csv.length());

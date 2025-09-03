@@ -17,6 +17,9 @@ import java.util.ArrayList;
 import static java.nio.file.StandardOpenOption.CREATE;
 import javax.swing.JFileChooser;
 
+//CREATE COMMENTS FOR NEW VARIABLES and REWRITE ALGO DESCRIPTIONS
+//Remove any unused variables
+
 public class PersonReader
 {
     /**
@@ -33,8 +36,9 @@ public class PersonReader
         //This String holds the line that has just been read from the selected file
         String rec = "";
 
-        //This ArrayList holds every line from the document that is being read
-        ArrayList<String> records = new ArrayList<>();
+        ArrayList<Person> people = new ArrayList<>();
+
+        String[] fields;
 
         //This int sets a permanent value for the number of fields that should be found in each record
         final int FIELDS_LENGTH = 5;
@@ -53,6 +57,8 @@ public class PersonReader
 
         //This int holds the year of birth of each record read from the chosen text file
         int YOB = 0;
+
+        String csvRec = "";
 
         //This algorithm prompts the reader to select a file to read, reads the contents of the file to the records ArrayList, splits each record in the ArrayList into five fields, prints them to the console, and checks for exceptions
         try
@@ -81,9 +87,26 @@ public class PersonReader
                 while(reader.ready())
                 {
                     rec = reader.readLine();
-                    records.add(rec);
                     line++;
 
+                    fields = rec.split(",");
+
+                    if(fields.length == FIELDS_LENGTH)
+                    {
+                        ID = fields[0].trim();
+                        firstName = fields[1].trim();
+                        lastName = fields[2].trim();
+                        title = fields[3].trim();
+                        YOB = Integer.parseInt(fields[4].trim());
+
+                        Person person = new Person(ID, firstName, lastName, title, YOB);
+                        people.add(person);
+                    }
+                    else
+                    {
+                        System.out.println("One of the records in your file may be corrupted. Please select a different file.");
+                        System.out.println(rec);
+                    }
                     System.out.printf("\nLine %4d %-60s ", line, rec);
                 }
                 reader.close();
@@ -93,12 +116,13 @@ public class PersonReader
                 System.out.println("================================================");
 
                 //This array holds the values from each record after they have been split
-                String[] fields;
+
 
                 //This algorithm splits each record in the records ArrayList based on comma delimiters, puts the split values into the fields array, then puts each value from the fields array into a separate variable for printing
-                for(String r : records)
+                for(Person p : people)
                 {
-                    fields = r.split(",");
+                    csvRec = p.toCSV();
+                    fields = csvRec.split(",");
 
                     //This algorithm checks if the number of values per record is as expected, trims each value from the fields array, then puts it into a separate variable for printing
                     if(fields.length == FIELDS_LENGTH)
@@ -108,12 +132,13 @@ public class PersonReader
                         lastName = fields[2].trim();
                         title = fields[3].trim();
                         YOB = Integer.parseInt(fields[4].trim());
+
                         System.out.printf("\n%-8s%-14s%-13s%-8s%5d", ID, firstName, lastName, title, YOB);
                     }
                     else
                     {
                         System.out.println("One of the records in your file may be corrupted. Please select a different file.");
-                        System.out.println(r);
+                        System.out.println(csvRec);
                     }
                 }
             }

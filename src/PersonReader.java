@@ -21,6 +21,7 @@ import javax.swing.JFileChooser;
 //continue working on product files
 //research equals method (lectures, Zoom)
 //watch Zoom lecture
+//check if you need to create the automatic ID incrementer
 //watch JSON, UML, etc. videos
 //write JavaDoc
 //create comments for any new variables and rewrite how algorithms are described in comments

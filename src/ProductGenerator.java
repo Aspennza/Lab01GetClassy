@@ -11,6 +11,7 @@ import static java.nio.file.StandardOpenOption.CREATE;
 //continue working on product files
 //research equals method (lectures, Zoom)
 //watch Zoom lecture
+//check if you need to create the automatic ID incrementer
 //watch JSON, UML, etc. videos
 //write JavaDoc
 //create comments for any new variables and rewrite how algorithms are described in comments
@@ -39,9 +40,6 @@ public class ProductGenerator
         //This boolean holds the true/false value that determines whether the user is done entering records
         boolean done = false;
 
-        //This String holds the concatenated product record, containing the ID, name, description, and cost of a given product
-        String productRec = "";
-
         //This String contains the 6-digit ID the user inputs for a product
         String ID = "";
 
@@ -53,6 +51,8 @@ public class ProductGenerator
 
         //This double contains the cost the user inputs for a product
         double cost = 0.00;
+
+        String csv = "";
 
         //This algorithm takes the user's input to receive an ID, name, description, and cost for a product, concatenates them into a productRec, and adds the record to the products ArrayList, then checks if the user is done entering records
         do {
@@ -85,9 +85,9 @@ public class ProductGenerator
             //This algorithm writes each record in the products ArrayList into the ProductTestData.txt file indicated above
             for(Product p : products)
             {
-                //create toCSV method and use it here
+                csv = p.toCSV();
 
-                writer.write(rec, 0, rec.length());
+                writer.write(csv, 0, csv.length());
                 writer.newLine();
             }
             writer.close();

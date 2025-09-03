@@ -114,4 +114,13 @@ public class Person
 
         return stringAge;
     }
+
+    public String toCSV()
+    {
+        String csvRec = "";
+
+        csvRec = getID() + ", " + getFirstName() + ", " + getLastName() + ", " + getTitle() + ", " + getYOB();
+
+        return csvRec;
+    }
 }

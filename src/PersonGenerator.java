@@ -76,9 +76,12 @@ public class PersonGenerator
                     new BufferedWriter(new OutputStreamWriter(out));
 
              //This algorithm writes each record in the people ArrayList into the PersonTestData.txt file
-            for(String rec : people)
+            for(Person p : people)
             {
-                writer.write(rec, 0, rec.length());
+                String csv = "";
+                csv = p.toCSV();
+
+                writer.write(csv, 0, csv.length());
                 writer.newLine();
             }
             writer.close();

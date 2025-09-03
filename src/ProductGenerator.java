@@ -7,7 +7,17 @@ import java.util.Scanner;
 
 import static java.nio.file.StandardOpenOption.CREATE;
 
-public class ProductWriter
+//Need to:
+//continue working on product files
+//research equals method (lectures, Zoom)
+//watch Zoom lecture
+//watch JSON, UML, etc. videos
+//write JavaDoc
+//create comments for any new variables and rewrite how algorithms are described in comments
+//remove unused variables
+//reread assignment directions from the top
+
+public class ProductGenerator
 {
     /**
      * @param args the command line arguments
@@ -15,7 +25,7 @@ public class ProductWriter
     public static void main(String[] args)
     {
         //This ArrayList holds the total number of product records entered by the user
-        ArrayList<String> products = new ArrayList<>();
+        ArrayList<Product> products = new ArrayList<>();
 
         //This Scanner takes all user input
         Scanner in = new Scanner(System.in);
@@ -51,15 +61,16 @@ public class ProductWriter
             description = SafeInput.getNonZeroLenString(in, "Please enter a short description of your product");
             cost = SafeInput.getDouble(in, "Please enter the cost of your product [non-negative]");
 
-            productRec = ID + ", " + name + ", " + description + ", " + cost;
-            products.add(productRec);
+            Product product = new Product(ID, name, description, cost);
+            products.add(product);
 
             done = SafeInput.getYNConfirm(in, "Have you finished entering products?");
         }while(!done);
 
         //This algorithm prints each record in the products ArrayList to the console
-        for (String p : products)
+        for (Product p : products)
         {
+            System.out.println();
             System.out.println(p);
         }
 
@@ -72,8 +83,10 @@ public class ProductWriter
                     new BufferedWriter(new OutputStreamWriter(out));
 
             //This algorithm writes each record in the products ArrayList into the ProductTestData.txt file indicated above
-            for(String rec : products)
+            for(Product p : products)
             {
+                //create toCSV method and use it here
+
                 writer.write(rec, 0, rec.length());
                 writer.newLine();
             }

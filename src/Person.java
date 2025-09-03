@@ -2,8 +2,15 @@ import java.util.Objects;
 import java.util.Calendar;
 import java.util.Date;
 
-//WRITE JAVADOC!!
-//RESEARCH EQUALS() OVERRIDE; look at CP II videos, look at Prof's thursday Zoom lecture
+//Need to:
+//continue working on product files
+//research equals method (lectures, Zoom)
+//watch Zoom lecture
+//watch JSON, UML, etc. videos
+//write JavaDoc
+//create comments for any new variables and rewrite how algorithms are described in comments
+//remove unused variables
+//reread assignment directions from the top
 
 public class Person
 {

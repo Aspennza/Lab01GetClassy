@@ -7,7 +7,15 @@ import java.util.Scanner;
 
 import static java.nio.file.StandardOpenOption.CREATE;
 
-//WRITE COMMENTS FOR NEW VARIABLES
+//Need to:
+//continue working on product files
+//research equals method (lectures, Zoom)
+//watch Zoom lecture
+//watch JSON, UML, etc. videos
+//write JavaDoc
+//create comments for any new variables and rewrite how algorithms are described in comments
+//remove unused variables
+//reread assignment directions from the top
 
 public class PersonGenerator
 {

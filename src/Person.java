@@ -98,4 +98,20 @@ public class Person
 
         return stringAge;
     }
+
+    public String getAge(int year)
+    {
+        int selectedYear = 0;
+        int age = 0;
+        String stringAge = "";
+        Calendar calendar = Calendar.getInstance();
+
+        calendar.set(Calendar.YEAR, year);
+        selectedYear = calendar.get(Calendar.YEAR);
+
+        age = selectedYear - getYOB();
+        stringAge = Integer.toString(age);
+
+        return stringAge;
+    }
 }

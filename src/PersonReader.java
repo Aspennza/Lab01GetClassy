@@ -115,31 +115,16 @@ public class PersonReader
                 System.out.println("ID#     Firstname     Lastname     Title     YOB");
                 System.out.println("================================================");
 
-                //This array holds the values from each record after they have been split
-
-
                 //This algorithm splits each record in the records ArrayList based on comma delimiters, puts the split values into the fields array, then puts each value from the fields array into a separate variable for printing
                 for(Person p : people)
                 {
-                    csvRec = p.toCSV();
-                    fields = csvRec.split(",");
-
-                    //This algorithm checks if the number of values per record is as expected, trims each value from the fields array, then puts it into a separate variable for printing
-                    if(fields.length == FIELDS_LENGTH)
-                    {
-                        ID = fields[0].trim();
-                        firstName = fields[1].trim();
-                        lastName = fields[2].trim();
-                        title = fields[3].trim();
-                        YOB = Integer.parseInt(fields[4].trim());
+                        ID = p.getID();
+                        firstName = p.getFirstName();
+                        lastName = p.getLastName();
+                        title = p.getTitle();
+                        YOB = p.getYOB();
 
                         System.out.printf("\n%-8s%-14s%-13s%-8s%5d", ID, firstName, lastName, title, YOB);
-                    }
-                    else
-                    {
-                        System.out.println("One of the records in your file may be corrupted. Please select a different file.");
-                        System.out.println(csvRec);
-                    }
                 }
             }
             else

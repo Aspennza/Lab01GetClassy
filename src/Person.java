@@ -1,6 +1,9 @@
 import java.util.Objects;
+import java.util.Calendar;
+import java.util.Date;
 
 //WRITE JAVADOC!!
+//RESEARCH EQUALS() OVERRIDE; look at CP II videos, look at Prof's thursday Zoom lecture
 
 public class Person
 {
@@ -67,12 +70,32 @@ public class Person
                 '}';
     }
 
-    //RESEARCH EQUALS() OVERRIDE; look at CP II videos, look at Prof's thursday Zoom lecture
-
     public String fullName()
     {
         String fullName = "";
         fullName = getFirstName() + " " + getLastName();
         return fullName;
+    }
+
+    public String formalName()
+    {
+        String formalName = "";
+        formalName = getTitle() + " " + fullName();
+        return formalName;
+    }
+
+    public String getAge()
+    {
+        int currentYear = 0;
+        int age = 0;
+        String stringAge = "";
+        Calendar calendar = Calendar.getInstance();
+
+        currentYear = calendar.get(Calendar.YEAR);
+        age = currentYear - getYOB();
+
+        stringAge = Integer.toString(age);
+
+        return stringAge;
     }
 }

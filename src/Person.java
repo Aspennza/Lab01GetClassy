@@ -92,16 +92,12 @@ public class Person
 
     public String fullName()
     {
-        String fullName = "";
-        fullName = getFirstName() + " " + getLastName();
-        return fullName;
+        return firstName + " " + lastName;
     }
 
     public String formalName()
     {
-        String formalName = "";
-        formalName = getTitle() + " " + fullName();
-        return formalName;
+        return title + " " + firstName + " " + lastName;
     }
 
     public String getAge()
@@ -112,7 +108,7 @@ public class Person
         Calendar calendar = Calendar.getInstance();
 
         currentYear = calendar.get(Calendar.YEAR);
-        age = currentYear - getYOB();
+        age = currentYear - YOB;
 
         stringAge = Integer.toString(age);
 
@@ -121,15 +117,13 @@ public class Person
 
     public String getAge(int year)
     {
-        int selectedYear = 0;
         int age = 0;
         String stringAge = "";
         Calendar calendar = Calendar.getInstance();
 
         calendar.set(Calendar.YEAR, year);
-        selectedYear = calendar.get(Calendar.YEAR);
 
-        age = selectedYear - getYOB();
+        age = calendar.get(Calendar.YEAR) - YOB;
         stringAge = Integer.toString(age);
 
         return stringAge;
@@ -137,10 +131,19 @@ public class Person
 
     public String toCSV()
     {
-        String csvRec = "";
+        return ID + ", " + firstName + ", " + lastName + ", " + title + ", " + YOB;
+    }
 
-        csvRec = getID() + ", " + getFirstName() + ", " + getLastName() + ", " + getTitle() + ", " + getYOB();
+    public String toJSON()
+    {
+        String retString = "";
+        char DQ = '\u0022';
+        retString = "{" + DQ + "IDNum" + DQ + ":" + DQ + this.ID + DQ + ",";
+        retString += " " + DQ + "firstName" + DQ + ":" + DQ + this.firstName + DQ + ",";
+        retString += " " + DQ + "lastName" + DQ + ":" + DQ + this.lastName + DQ + ",";
+        retString += " " + DQ + "title" + DQ + ":" + DQ + this.title + DQ + ",";
+        retString += " " + DQ + "YOB" + DQ + ":" + this.YOB + "}";
 
-        return csvRec;
+        return retString;
     }
 }

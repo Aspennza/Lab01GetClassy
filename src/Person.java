@@ -62,7 +62,6 @@ public class Person
         return YOB;
     }
 
-    //May not need a setter for YOB? I'll decide later.
     public void setYOB(int YOB) {
         this.YOB = YOB;
     }
@@ -76,6 +75,19 @@ public class Person
                 ", title='" + title + '\'' +
                 ", YOB=" + YOB +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return YOB == person.YOB && Objects.equals(ID, person.ID) && Objects.equals(firstName, person.firstName) && Objects.equals(lastName, person.lastName) && Objects.equals(title, person.title);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(ID, firstName, lastName, title, YOB);
     }
 
     public String fullName()

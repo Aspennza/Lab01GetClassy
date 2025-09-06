@@ -1,6 +1,5 @@
 import java.util.Objects;
 import java.util.Calendar;
-import java.util.Date;
 
 //Need to:
 //continue working on product files
@@ -143,6 +142,19 @@ public class Person
         retString += " " + DQ + "lastName" + DQ + ":" + DQ + this.lastName + DQ + ",";
         retString += " " + DQ + "title" + DQ + ":" + DQ + this.title + DQ + ",";
         retString += " " + DQ + "YOB" + DQ + ":" + this.YOB + "}";
+
+        return retString;
+    }
+
+    public String toXML()
+    {
+        String retString = "";
+        retString = "<Person>";
+        retString += "<IDNum>" + ID + "</IDNum>";
+        retString += "<firstName>" + this.firstName + "</firstName>";
+        retString += "<lastName>" + this.lastName + "</lastName>";
+        retString += "<title>" + this.title + "</title>";
+        retString += "<YOB>" + this.YOB + "</YOB></Person>";
 
         return retString;
     }

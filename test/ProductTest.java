@@ -55,17 +55,21 @@ class ProductTest {
 
     @Test
     void testHashCode() {
+        assertEquals(-1631514885, product1.hashCode());
     }
 
     @Test
     void toCSV() {
+        assertEquals("000001, Computer, Computer with mouse and keyboard, 500.0", product1.toCSV());
     }
 
     @Test
     void toJSON() {
+        assertEquals("{\"IDNum\":\"000001\", \"name\":\"Computer\", \"description\":\"Computer with mouse and keyboard\", \"cost\":500.0}", product1.toJSON());
     }
 
     @Test
     void toXML() {
+        assertEquals("<Product><IDNum>000001</IDNum><name>Computer</name><description>Computer with mouse and keyboard</description><cost>500.0</cost></Product>", product1.toXML());
     }
 }

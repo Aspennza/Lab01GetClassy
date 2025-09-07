@@ -1,18 +1,12 @@
 import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import static java.lang.System.out;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import static java.nio.file.StandardOpenOption.CREATE;
 import javax.swing.JFileChooser;
@@ -45,7 +39,12 @@ public class ProductReader
         String rec = "";
 
         //This ArrayList holds every line from the document being read
-        ArrayList<String> products = new ArrayList<>();
+        ArrayList<String> lines = new ArrayList<>();
+
+        ArrayList<Product> products = new ArrayList<>();
+
+        //This array holds the values from each record after they have been split
+        String[] fields;
 
         //This int determines the total number of values that should be found in each record
         final int FIELDS_LENGTH = 4;
@@ -62,7 +61,7 @@ public class ProductReader
         //This double holds the cost of each record read from the chosen text file
         double cost = 0.00;
 
-        //This algorithm prompts the user to select a file to read, reads each line of the file into the products ArrayList, splits each record into four fields, prints those values to the console, and checks for exceptions
+        //This algorithm prompts the user to select a file to read, reads each line of the file into the lines ArrayList, splits each record into four fields, prints those values to the console, and checks for exceptions
         try
         {
             System.out.println("Please select a file containing product records to read to the console.");
@@ -71,7 +70,7 @@ public class ProductReader
             File workingDirectory = new File(System.getProperty("user.dir"));
             chooser.setCurrentDirectory(workingDirectory);
 
-            //This algorithm checks if the user selected a file, reads each record in the file into the products ArrayList, splits each record into four fields, and prints those values to the console
+            //This algorithm checks if the user selected a file, reads each record in the file into the lines ArrayList, splits each record into four fields, and prints those values to the console
             if(chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION)
             {
                 selectedFile = chooser.getSelectedFile();
@@ -85,11 +84,11 @@ public class ProductReader
                 //This int tracks how many lines have been read
                 int line = 0;
 
-                //This algorithm reads each line of the selected file into the rec variable, adds each record to the products ArrayList, and prints each line to the console
+                //This algorithm reads each line of the selected file into the rec variable, adds each record to the lines ArrayList, and prints each line to the console
                 while(reader.ready())
                 {
                     rec = reader.readLine();
-                    products.add(rec);
+                    lines.add(rec);
                     line++;
 
                     System.out.printf("\nLine %-4d %-60s", line, rec);
@@ -100,13 +99,10 @@ public class ProductReader
                 System.out.println("ID#     Name          Description              Cost");
                 System.out.println("=========================================================");
 
-                //This array holds the values from each record after they have been split
-                String[] fields;
-
-                //This algorithm splits each record in the products ArrayList based on comma delimiters, puts the split values into the fields array, then trims each value into a variable to be printed to the console
-                for(String p : products)
+                //This algorithm splits each record in the lines ArrayList based on comma delimiters, puts the split values into the fields array, then trims each value into a variable to be printed to the console
+                for(String l : lines)
                 {
-                    fields = p.split(",");
+                    fields = l.split(",");
 
                     //This algorithm checks if the fields array has the correct number of values, then trims each value in the fields array into a variable to be printed to the console
                     if(fields.length == FIELDS_LENGTH)
@@ -115,12 +111,16 @@ public class ProductReader
                         name = fields[1].trim();
                         description = fields[2].trim();
                         cost = Double.parseDouble(fields[3].trim());
+
                         System.out.printf("\n%-8s%-14s%-25s%8f", ID, name, description, cost);
+
+                        Product product = new Product(ID, name, description, cost);
+                        products.add(product);
                     }
                     else
                     {
                         System.out.println("One of the records in your file may be corrupted. Please select a different file.");
-                        System.out.println(p);
+                        System.out.println(l);
                     }
                 }
             }

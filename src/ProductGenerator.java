@@ -40,6 +40,8 @@ public class ProductGenerator
         //This boolean holds the true/false value that determines whether the user is done entering records
         boolean done = false;
 
+        String csv = "";
+
         //This String contains the 6-digit ID the user inputs for a product
         String ID = "";
 
@@ -52,7 +54,6 @@ public class ProductGenerator
         //This double contains the cost the user inputs for a product
         double cost = 0.00;
 
-        String csv = "";
 
         //This algorithm takes the user's input to receive an ID, name, description, and cost for a product, concatenates them into a productRec, and adds the record to the products ArrayList, then checks if the user is done entering records
         do {
@@ -66,13 +67,6 @@ public class ProductGenerator
 
             done = SafeInput.getYNConfirm(in, "Have you finished entering products?");
         }while(!done);
-
-        //This algorithm prints each record in the products ArrayList to the console
-        for (Product p : products)
-        {
-            System.out.println();
-            System.out.println(p);
-        }
 
         //This algorithm writes each record in the products ArrayList into the ProductTestData.txt file indicated above, then checks for exceptions
         try

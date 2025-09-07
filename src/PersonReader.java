@@ -109,7 +109,7 @@ public class PersonReader
                 //This algorithm splits each record in the records ArrayList based on comma delimiters, puts the split values into the fields array, then puts each value from the fields array into a separate variable for printing
                 for(String l : lines)
                 {
-                    fields = rec.split(",");
+                    fields = l.split(",");
 
                     if(fields.length == FIELDS_LENGTH)
                     {
@@ -127,7 +127,7 @@ public class PersonReader
                     else
                     {
                         System.out.println("One of the records in your file may be corrupted. Please select a different file.");
-                        System.out.println(rec);
+                        System.out.println(l);
                     }
                 }
             }

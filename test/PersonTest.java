@@ -1,64 +1,72 @@
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class PersonTest {
 
-    @org.junit.jupiter.api.BeforeEach
+    Person person1;
+
+    @BeforeEach
     void setUp() {
+        person1 = new Person("000001", "Bilbo", "Baggins", "Esq.", 1940);
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void setFirstName() {
+        person1.setFirstName("Frodo");
+        assertEquals("Frodo", person1.getFirstName());
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void setLastName() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void setTitle() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void setYOB() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void testToString() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void testEquals() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void testHashCode() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void fullName() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void formalName() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void getAge() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void testGetAge() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void toCSV() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void toJSON() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void toXML() {
     }
 }

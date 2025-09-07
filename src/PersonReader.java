@@ -44,6 +44,8 @@ public class PersonReader
         //This String holds the line that has just been read from the selected file
         String rec = "";
 
+        ArrayList<String> lines = new ArrayList<>();
+
         ArrayList<Person> people = new ArrayList<>();
 
         String[] fields;
@@ -65,8 +67,6 @@ public class PersonReader
 
         //This int holds the year of birth of each record read from the chosen text file
         int YOB = 0;
-
-        String csvRec = "";
 
         //This algorithm prompts the reader to select a file to read, reads the contents of the file to the records ArrayList, splits each record in the ArrayList into five fields, prints them to the console, and checks for exceptions
         try
@@ -95,8 +95,20 @@ public class PersonReader
                 while(reader.ready())
                 {
                     rec = reader.readLine();
+                    lines.add(rec);
                     line++;
 
+                    System.out.printf("\nLine %4d %-60s ", line, rec);
+                }
+                reader.close();
+                System.out.println("\n\nThe data file has been read.\n");
+
+                System.out.println("ID#     Firstname     Lastname     Title     YOB");
+                System.out.println("================================================");
+
+                //This algorithm splits each record in the records ArrayList based on comma delimiters, puts the split values into the fields array, then puts each value from the fields array into a separate variable for printing
+                for(String l : lines)
+                {
                     fields = rec.split(",");
 
                     if(fields.length == FIELDS_LENGTH)
@@ -107,6 +119,8 @@ public class PersonReader
                         title = fields[3].trim();
                         YOB = Integer.parseInt(fields[4].trim());
 
+                        System.out.printf("\n%-8s%-14s%-13s%-8s%5d", ID, firstName, lastName, title, YOB);
+
                         Person person = new Person(ID, firstName, lastName, title, YOB);
                         people.add(person);
                     }
@@ -115,24 +129,6 @@ public class PersonReader
                         System.out.println("One of the records in your file may be corrupted. Please select a different file.");
                         System.out.println(rec);
                     }
-                    System.out.printf("\nLine %4d %-60s ", line, rec);
-                }
-                reader.close();
-                System.out.println("\n\nThe data file has been read.\n");
-
-                System.out.println("ID#     Firstname     Lastname     Title     YOB");
-                System.out.println("================================================");
-
-                //This algorithm splits each record in the records ArrayList based on comma delimiters, puts the split values into the fields array, then puts each value from the fields array into a separate variable for printing
-                for(Person p : people)
-                {
-                        ID = p.getID();
-                        firstName = p.getFirstName();
-                        lastName = p.getLastName();
-                        title = p.getTitle();
-                        YOB = p.getYOB();
-
-                        System.out.printf("\n%-8s%-14s%-13s%-8s%5d", ID, firstName, lastName, title, YOB);
                 }
             }
             else

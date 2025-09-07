@@ -71,13 +71,6 @@ public class PersonGenerator
             done = SafeInput.getYNConfirm(in, "Have you finished entering records?");
         }while(!done);
 
-         //This algorithm prints each record in the people ArrayList to the console
-        for (Person p : people)
-        {
-            System.out.println();
-            System.out.println(p);
-        }
-
          //This algorithm writes each record in the people ArrayList into the PersonTestData.txt file indicated above, then checks for exceptions
         try
         {

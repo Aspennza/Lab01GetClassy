@@ -3,13 +3,14 @@ import java.util.Calendar;
 
 //Need to:
 //continue working on product files
-//research equals method (lectures, Zoom)
-//watch Zoom lecture
-//check if you need to create the automatic ID incrementer
+//make sure product has all the same stuff as person
+//write unit tests
+//watch Zoom lectures
 //watch JSON, UML, etc. videos
 //write JavaDoc
 //create comments for any new variables and rewrite how algorithms are described in comments
 //remove unused variables
+//create UML diagrams for Person, Product, and SafeInputObj
 //reread assignment directions from the top
 
 public class Person

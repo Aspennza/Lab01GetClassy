@@ -6,10 +6,12 @@ import static org.junit.jupiter.api.Assertions.*;
 class ProductTest {
 
     Product product1;
+    Product product2;
 
     @BeforeEach
     void setUp() {
         product1 = new Product("000001", "Computer", "Computer with mouse and keyboard", 500.00);
+        product2 = new Product("000002", "Burger", "Burger with lettuce and tomato", 7.00);
     }
 
     @Test
@@ -30,18 +32,25 @@ class ProductTest {
 
     @Test
     void setDescription() {
+        product1.setDescription("Laptop computer with stylus pen");
+        assertEquals("Laptop computer with stylus pen", product1.getDescription());
     }
 
     @Test
     void setCost() {
+        product1.setCost(550.55);
+        assertEquals(550.55, product1.getCost());
     }
 
     @Test
     void testToString() {
+        assertEquals("Product{ID='000001', name='Computer', description='Computer with mouse and keyboard', cost=500.0}", product1.toString());
     }
 
     @Test
     void testEquals() {
+        assertTrue(product1.equals(product1));
+        assertFalse(product2.equals(product1));
     }
 
     @Test

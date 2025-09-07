@@ -6,10 +6,12 @@ import static org.junit.jupiter.api.Assertions.*;
 class PersonTest {
 
     Person person1;
+    Person person2;
 
     @BeforeEach
     void setUp() {
         person1 = new Person("000001", "Bilbo", "Baggins", "Esq.", 1940);
+        person2 = new Person("000002", "Frodo", "Baggins", "Esq.", 1960);
     }
 
     @Test
@@ -54,6 +56,7 @@ class PersonTest {
     @Test
     void testEquals() {
         assertTrue(person1.equals(person1));
+        assertFalse(person2.equals(person1));
     }
 
     @Test

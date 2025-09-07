@@ -1,5 +1,10 @@
 import java.util.Scanner;
 
+//Need to:
+//write javadoc for all programs
+//create UML diagrams
+//take screenshots
+
 public class SafeInputObj
 {
     //This Scanner takes all user input

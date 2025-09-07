@@ -1,3 +1,8 @@
+//Need to:
+//write javadoc for all programs
+//create UML diagrams
+//take screenshots
+
 public class ObjInputTest
 {
     public static void main(String[] args)

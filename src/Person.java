@@ -2,16 +2,16 @@ import java.util.Objects;
 import java.util.Calendar;
 
 //Need to:
-//continue working on product files
-//make sure product has all the same stuff as person
-//write unit tests
-//watch Zoom lectures
-//watch JSON, UML, etc. videos
-//write JavaDoc
-//create comments for any new variables and rewrite how algorithms are described in comments
-//remove unused variables
-//create UML diagrams for Person, Product, and SafeInputObj
-//reread assignment directions from the top
+//write javadoc for all programs
+//create UML diagrams
+//take screenshots
+
+/**
+ * Allows the creation of objects representing personal data, including an ID number,
+ * first name, last name, title, and year of birth. Also includes functions for acting
+ * on said objects.
+ * @author Zoe Aspenns aspennza@mail.uc.edu
+ */
 
 public class Person
 {
@@ -66,6 +66,11 @@ public class Person
         this.YOB = YOB;
     }
 
+    /**
+     * Replaces the default toString method with a version that makes the content (ID, firstName, lastName, etc.)
+     * of a Person object visible to help with debugging.
+     * @return   a formatted String representing the content inside a Person object
+     */
     @Override
     public String toString() {
         return "Person{" +
@@ -77,6 +82,12 @@ public class Person
                 '}';
     }
 
+    /**
+     * Tests whether an input object is of the Person class, then tests if the object's fields
+     * are equivalent to another object's.
+     * @param o   the reference object with which to compare.
+     * @return    a true or false value representing whether the two objects are equal or not.
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -85,21 +96,37 @@ public class Person
         return YOB == person.YOB && Objects.equals(ID, person.ID) && Objects.equals(firstName, person.firstName) && Objects.equals(lastName, person.lastName) && Objects.equals(title, person.title);
     }
 
+    /**
+     * Produces the hashed value of an object.
+     * @return an int containing the hash of an object.
+     */
     @Override
     public int hashCode() {
         return Objects.hash(ID, firstName, lastName, title, YOB);
     }
 
+    /**
+     * Concatenates a person's first and last names.
+     * @return a String containing a person's full name.
+     */
     public String fullName()
     {
         return firstName + " " + lastName;
     }
 
+    /**
+     * Concatenates a person's title, first name, and last name.
+     * @return a String containing a person's title and full name.
+     */
     public String formalName()
     {
         return title + " " + firstName + " " + lastName;
     }
 
+    /**
+     * Identifies the current year, then subtracts a person's year of birth to find their age.
+     * @return a String containing a person's age.
+     */
     public String getAge()
     {
         int currentYear = 0;
@@ -115,6 +142,12 @@ public class Person
         return stringAge;
     }
 
+    /**
+     * Takes a year as a parameter, then subtracts a person's year of birth from the
+     * given year to find their age during that year.
+     * @param year   an int representing the selected year.
+     * @return       a String containing the person's age.
+     */
     public String getAge(int year)
     {
         int age = 0;
@@ -129,11 +162,19 @@ public class Person
         return stringAge;
     }
 
+    /**
+     * Takes the content of a Person object and converts it into a CSV format.
+     * @return a String containing a comma-separated list of personal traits.
+     */
     public String toCSV()
     {
         return ID + ", " + firstName + ", " + lastName + ", " + title + ", " + YOB;
     }
 
+    /**
+     * Takes the content of a Person object and converts it into a JSON format.
+     * @return a String containing personal traits listed in the JSON format.
+     */
     public String toJSON()
     {
         String retString = "";
@@ -147,6 +188,10 @@ public class Person
         return retString;
     }
 
+    /**
+     * Takes the content of a Person object and converts it into XML format.
+     * @return a String containing personal traits listed in the XML format.
+     */
     public String toXML()
     {
         String retString = "";

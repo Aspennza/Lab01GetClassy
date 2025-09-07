@@ -9,6 +9,8 @@
 //remove unused variables
 //reread assignment directions from the top
 
+import java.util.Objects;
+
 public class Product
 {
     private String ID;
@@ -62,12 +64,44 @@ public class Product
                 '}';
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return Double.compare(cost, product.cost) == 0 && Objects.equals(ID, product.ID) && Objects.equals(name, product.name) && Objects.equals(description, product.description);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(ID, name, description, cost);
+    }
+
     public String toCSV()
     {
-        String csvRec = "";
+        return ID + ", " + name + ", " + description + ", " + cost;
+    }
 
-        csvRec = getID() + ", " + getName() + ", " + getDescription() + ", " + getCost();
+    public String toJSON()
+    {
+        String retString = "";
+        char DQ = '\u0022';
+        retString = "{" + DQ + "IDNum" + DQ + ":" + DQ + this.ID + DQ + ",";
+        retString += " " + DQ + "name" + DQ + ":" + DQ + this.name + DQ + ",";
+        retString += " " + DQ + "description" + DQ + ":" + DQ + this.description + DQ + ",";
+        retString += " " + DQ + "cost" + DQ + ":" + this.cost + "}";
 
-        return csvRec;
+        return retString;
+    }
+
+    public String toXML()
+    {
+        String retString = "";
+        retString = "<Product>";
+        retString += "<IDNum>" + ID + "</IDNum>";
+        retString += "<name>" + this.name + "</name>";
+        retString += "<description>" + this.description + "</description>";
+        retString += "<cost>" + this.cost + "</cost></Product>";
+
+        return retString;
     }
 }

@@ -12,6 +12,10 @@ import static java.nio.file.StandardOpenOption.CREATE;
 //create UML diagrams
 //take screenshots
 
+/**
+ * Creates Person objects containing personal data, then writes them to a CSV file.
+ * @author Zoe Aspenns aspennza@mail.uc.edu
+ */
 public class PersonGenerator
 {
     /**
@@ -19,39 +23,28 @@ public class PersonGenerator
      */
     public static void main(String[] args)
     {
-        //This ArrayList holds a list of all person records input by the user
         ArrayList<Person> people = new ArrayList<>();
 
-         //This Scanner takes all user input
         Scanner in = new Scanner(System.in);
 
-         //This file holds the current directory
         File workingDirectory = new File(System.getProperty("user.dir"));
 
-         //This Path holds the current directory concatenated with the location of the text file that will be created
         Path file = Paths.get(workingDirectory.getPath() + "\\src\\PersonTestData.txt");
 
-         //This boolean holds the true/false value that determines if the user continues or stops entering records
         boolean done = false;
 
         String csv = "";
 
-         //This String holds the 6-digit ID of each person record input by the user
         String ID = "";
 
-         //This String holds the first name of each person input by the user
         String firstName = "";
 
-         //This String holds the last name of each person input by the user
         String lastName = "";
 
-         //This String holds the title (Mr., Ms., Esq., etc.) of each person input by the user
         String title = "";
 
-         //This int holds the birth year of each person input by the user
         int YOB = 0;
 
-         //This algorithm prompts the user to enter an ID, firstName, lastName, title, and YOB, concatenates these values into a record, adds the record to the people ArrayList, then determines if the user is finished entering records
         do {
             ID = SafeInput.getNonZeroLenString(in, "Please enter the ID for your record [6 digits]");
             firstName = SafeInput.getNonZeroLenString(in, "Please enter the first name for your record");
@@ -65,7 +58,6 @@ public class PersonGenerator
             done = SafeInput.getYNConfirm(in, "Have you finished entering records?");
         }while(!done);
 
-         //This algorithm writes each record in the people ArrayList into the PersonTestData.txt file indicated above, then checks for exceptions
         try
         {
             OutputStream out =
@@ -73,7 +65,6 @@ public class PersonGenerator
             BufferedWriter writer =
                     new BufferedWriter(new OutputStreamWriter(out));
 
-             //This algorithm writes each record in the people ArrayList into the PersonTestData.txt file
             for(Person p : people)
             {
                 csv = p.toCSV();

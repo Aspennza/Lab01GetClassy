@@ -12,7 +12,6 @@ import java.util.Calendar;
  * on said objects.
  * @author Zoe Aspenns aspennza@mail.uc.edu
  */
-
 public class Person
 {
     private String ID;
@@ -66,11 +65,6 @@ public class Person
         this.YOB = YOB;
     }
 
-    /**
-     * Replaces the default toString method with a version that makes the content (ID, firstName, lastName, etc.)
-     * of a Person object visible to help with debugging.
-     * @return   a formatted String representing the content inside a Person object
-     */
     @Override
     public String toString() {
         return "Person{" +
@@ -82,12 +76,6 @@ public class Person
                 '}';
     }
 
-    /**
-     * Tests whether an input object is of the Person class, then tests if the object's fields
-     * are equivalent to another object's.
-     * @param o   the reference object with which to compare.
-     * @return    a true or false value representing whether the two objects are equal or not.
-     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -96,10 +84,6 @@ public class Person
         return YOB == person.YOB && Objects.equals(ID, person.ID) && Objects.equals(firstName, person.firstName) && Objects.equals(lastName, person.lastName) && Objects.equals(title, person.title);
     }
 
-    /**
-     * Produces the hashed value of an object.
-     * @return an int containing the hash of an object.
-     */
     @Override
     public int hashCode() {
         return Objects.hash(ID, firstName, lastName, title, YOB);

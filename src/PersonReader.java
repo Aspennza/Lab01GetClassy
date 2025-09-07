@@ -22,6 +22,11 @@ import javax.swing.JFileChooser;
 //create UML diagrams
 //take screenshots
 
+/**
+ * Reads input from CSV files containing personal data, outputs the data to the console,
+ * and inputs it into Person objects for storage.
+ * @author Zoe Aspenns aspennza@mail.uc.edu
+ */
 public class PersonReader
 {
     /**
@@ -29,13 +34,10 @@ public class PersonReader
      */
     public static void main(String[] args)
     {
-        //This file chooser is used to select a file to read
         JFileChooser chooser = new JFileChooser();
 
-        //This File holds the file selected by the user
         File selectedFile;
 
-        //This String holds the line that has just been read from the selected file
         String rec = "";
 
         ArrayList<String> lines = new ArrayList<>();
@@ -44,34 +46,25 @@ public class PersonReader
 
         String[] fields;
 
-        //This int sets a permanent value for the number of fields that should be found in each record
         final int FIELDS_LENGTH = 5;
 
-        //This String holds the ID of each record read from the chosen text file
         String ID = "";
 
-        //This String holds the firstName of each record read from the chosen text file
         String firstName = "";
 
-        //This String holds the lastName of each record read from the chosen text file
         String lastName = "";
 
-        //This String holds the title of each record read from the chosen text file
         String title = "";
 
-        //This int holds the year of birth of each record read from the chosen text file
         int YOB = 0;
 
-        //This algorithm prompts the reader to select a file to read, reads the contents of the file to the records ArrayList, splits each record in the ArrayList into five fields, prints them to the console, and checks for exceptions
         try
         {
             System.out.println("Please select a file containing personal records to read to the console.");
 
-            //This File holds the current directory
             File workingDirectory = new File(System.getProperty("user.dir"));
             chooser.setCurrentDirectory(workingDirectory);
 
-            //This algorithm identifies whether the user has selected a file, reads the file to the records ArrayList, splits each record in the ArrayList into five fields, then prints them to the console
             if(chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION)
             {
                 selectedFile = chooser.getSelectedFile();
@@ -82,10 +75,8 @@ public class PersonReader
                 BufferedReader reader =
                         new BufferedReader(new InputStreamReader(in));
 
-                //this int counts the number of lines that have been read
                 int line = 0;
 
-                //This algorithm reads the records from the chosen text file into the records ArrayList and prints each one out as it is read
                 while(reader.ready())
                 {
                     rec = reader.readLine();
@@ -100,7 +91,6 @@ public class PersonReader
                 System.out.println("ID#     Firstname     Lastname     Title     YOB");
                 System.out.println("================================================");
 
-                //This algorithm splits each record in the records ArrayList based on comma delimiters, puts the split values into the fields array, then puts each value from the fields array into a separate variable for printing
                 for(String l : lines)
                 {
                     fields = l.split(",");

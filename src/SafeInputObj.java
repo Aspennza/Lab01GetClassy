@@ -5,6 +5,7 @@ import java.util.Scanner;
 //create UML diagrams
 //take screenshots
 
+
 public class SafeInputObj
 {
     //This Scanner takes all user input

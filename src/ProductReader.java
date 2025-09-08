@@ -16,6 +16,11 @@ import javax.swing.JFileChooser;
 //create UML diagrams
 //take screenshots
 
+/**
+ * Reads input from CSV files containing product data, outputs the data to the console,
+ * and inputs it into Product objects for storage.
+ * @author Zoe Aspenns aspennza@mail.uc.edu
+ */
 public class ProductReader
 {
     /**
@@ -35,6 +40,7 @@ public class ProductReader
         //This ArrayList holds every line from the document being read
         ArrayList<String> lines = new ArrayList<>();
 
+        //This ArrayList holds every Product created based on the data read from the file
         ArrayList<Product> products = new ArrayList<>();
 
         //This array holds the values from each record after they have been split
@@ -55,7 +61,7 @@ public class ProductReader
         //This double holds the cost of each record read from the chosen text file
         double cost = 0.00;
 
-        //This algorithm prompts the user to select a file to read, reads each line of the file into the lines ArrayList, splits each record into four fields, prints those values to the console, and checks for exceptions
+        //This algorithm checks if the file reader has thrown an exception
         try
         {
             System.out.println("Please select a file containing product records to read to the console.");
@@ -64,7 +70,7 @@ public class ProductReader
             File workingDirectory = new File(System.getProperty("user.dir"));
             chooser.setCurrentDirectory(workingDirectory);
 
-            //This algorithm checks if the user selected a file, reads each record in the file into the lines ArrayList, splits each record into four fields, and prints those values to the console
+            //This algorithm checks if the user selected a file, reads each record in the file into the lines ArrayList, splits each record into four fields, prints those values to the console, and creates Product objects to store the data
             if(chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION)
             {
                 selectedFile = chooser.getSelectedFile();
@@ -93,12 +99,12 @@ public class ProductReader
                 System.out.println("ID#     Name          Description              Cost");
                 System.out.println("=========================================================");
 
-                //This algorithm splits each record in the lines ArrayList based on comma delimiters, puts the split values into the fields array, then trims each value into a variable to be printed to the console
+                //This algorithm splits each record in the lines ArrayList based on comma delimiters, puts the split values into the fields array, trims each value into a variable to be printed to the console, and adds each value to a Product object
                 for(String l : lines)
                 {
                     fields = l.split(",");
 
-                    //This algorithm checks if the fields array has the correct number of values, then trims each value in the fields array into a variable to be printed to the console
+                    //This algorithm checks if the fields array has the correct number of values, trims each value in the fields array into a variable to be printed to the console, and adds each variable to a Product object for storage
                     if(fields.length == FIELDS_LENGTH)
                     {
                         ID = fields[0].trim();

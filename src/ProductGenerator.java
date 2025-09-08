@@ -12,6 +12,10 @@ import static java.nio.file.StandardOpenOption.CREATE;
 //create UML diagrams
 //take screenshots
 
+/**
+ * Creates Product objects containing product data, then writes them to a CSV file.
+ * @author Zoe Aspenns aspennza@mail.uc.edu
+ */
 public class ProductGenerator
 {
     /**
@@ -19,7 +23,7 @@ public class ProductGenerator
      */
     public static void main(String[] args)
     {
-        //This ArrayList holds the total number of product records entered by the user
+        //This ArrayList holds the total number of Product objects entered by the user
         ArrayList<Product> products = new ArrayList<>();
 
         //This Scanner takes all user input
@@ -34,6 +38,7 @@ public class ProductGenerator
         //This boolean holds the true/false value that determines whether the user is done entering records
         boolean done = false;
 
+        //This String holds the comma-separated version of the data inside each Product object
         String csv = "";
 
         //This String contains the 6-digit ID the user inputs for a product
@@ -48,8 +53,7 @@ public class ProductGenerator
         //This double contains the cost the user inputs for a product
         double cost = 0.00;
 
-
-        //This algorithm takes the user's input to receive an ID, name, description, and cost for a product, concatenates them into a productRec, and adds the record to the products ArrayList, then checks if the user is done entering records
+        //This algorithm takes the user's input to receive an ID, name, description, and cost for a product, then adds that data to a Product object
         do {
             ID = SafeInput.getNonZeroLenString(in, "Please enter the ID for your product [6 digits]");
             name = SafeInput.getNonZeroLenString(in, "Please enter the name of your product");

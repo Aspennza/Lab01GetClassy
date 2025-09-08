@@ -5,17 +5,27 @@ import java.util.Scanner;
 //create UML diagrams
 //take screenshots
 
-
+/**
+ * Creates SafeInput objects that come with functions for testing the validity of user input.
+ * @author Zoe Aspenns aspennza@mail.uc.edu
+ */
 public class SafeInputObj
 {
     //This Scanner takes all user input
     Scanner pipe;
 
+    /**
+     * Constructs a SafeInputObj object containing a Scanner
+     */
     public SafeInputObj()
     {
         this.pipe = new Scanner(System.in);
     }
 
+    /**
+     * Constructs a SafeInputObj object that accepts a Scanner as a parameter
+     * @param scanner   A scanner used to read input from users
+     */
     public SafeInputObj(Scanner scanner)
     {
         this.pipe = scanner;
@@ -82,7 +92,7 @@ public class SafeInputObj
     /**
      * Get an int value with no constraints
      *
-     * @param prompt - input prompt msg should not include range info
+     * @param prompt - a prompt for the user's input
      * @return - unconstrained int value
      */
     public int getInt(String prompt)
@@ -154,7 +164,7 @@ public class SafeInputObj
     /**
      * Get an unconstrained double value
      *
-     * @param prompt - input prompt msg should not contain range info
+     * @param prompt - a prompt for the user's input
      * @return - an unconstrained double value
      */
     public double getDouble(String prompt)
@@ -185,7 +195,7 @@ public class SafeInputObj
     /**
      * Get a [Y/N] confirmation from the user
      *
-     * @param prompt -input prompt msg for user does not need [Y/N]
+     * @param prompt - input prompt msg for user does not need [Y/N]
      * @return - true for yes false for no
      */
     public boolean getYNConfirm(String prompt)
@@ -219,7 +229,7 @@ public class SafeInputObj
     }
 
     /**
-     * Get a string that matches a RegEx pattern! This is a very powerful method
+     * Gets a string that matches a RegEx pattern
      *
      * @param prompt       - prompt for user
      * @param regExPattern - java style RegEx pattern to constrain the input

@@ -34,37 +34,52 @@ public class PersonReader
      */
     public static void main(String[] args)
     {
+        //This file chooser is used to select a file to read
         JFileChooser chooser = new JFileChooser();
 
+        //This File holds the file selected by the user
         File selectedFile;
 
+        //This String holds the line that has just been read from the selected file
         String rec = "";
 
+        //This ArrayList holds every line from the document that is being read
         ArrayList<String> lines = new ArrayList<>();
 
+        //This ArrayList stores Person objects that have been created from the data fields read from the file
         ArrayList<Person> people = new ArrayList<>();
 
+        //This array holds the values from each record after they have been split
         String[] fields;
 
+        //This int sets a permanent value for the number of fields that should be found in each record
         final int FIELDS_LENGTH = 5;
 
+        //This String holds the ID of each record read from the chosen text file
         String ID = "";
 
+        //This String holds the firstName of each record read from the chosen text file
         String firstName = "";
 
+        //This String holds the lastName of each record read from the chosen text file
         String lastName = "";
 
+        //This String holds the title of each record read from the chosen text file
         String title = "";
 
+        //This int holds the year of birth of each record read from the chosen text file
         int YOB = 0;
 
+        //This algorithm checks to see if any exceptions have been thrown by the file reader
         try
         {
             System.out.println("Please select a file containing personal records to read to the console.");
 
+            //This File holds the current directory
             File workingDirectory = new File(System.getProperty("user.dir"));
             chooser.setCurrentDirectory(workingDirectory);
 
+            //This algorithm tests whether the user has selected a file and either closes the program or sets up a file reader depending on the result
             if(chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION)
             {
                 selectedFile = chooser.getSelectedFile();
@@ -75,8 +90,10 @@ public class PersonReader
                 BufferedReader reader =
                         new BufferedReader(new InputStreamReader(in));
 
+                //this int counts the number of lines that have been read
                 int line = 0;
 
+                //This algorithm reads each line from the chosen file into a String, adds that String to an ArrayList, then prints each line
                 while(reader.ready())
                 {
                     rec = reader.readLine();
@@ -91,10 +108,12 @@ public class PersonReader
                 System.out.println("ID#     Firstname     Lastname     Title     YOB");
                 System.out.println("================================================");
 
+                //This algorithm splits each line from the file into fields, formats each field, prints it to the console, and creates Person objects based on the data found
                 for(String l : lines)
                 {
                     fields = l.split(",");
 
+                    //This algorithm checks if the fields array has the right number of fields, formats each field, prints it to the console, and creates Person objects based on the data found
                     if(fields.length == FIELDS_LENGTH)
                     {
                         ID = fields[0].trim();
@@ -105,6 +124,7 @@ public class PersonReader
 
                         System.out.printf("\n%-8s%-14s%-13s%-8s%5d", ID, firstName, lastName, title, YOB);
 
+                        //This Person object stores each of the fields split from the fields array
                         Person person = new Person(ID, firstName, lastName, title, YOB);
                         people.add(person);
                     }

@@ -14,10 +14,19 @@ import java.util.Calendar;
  */
 public class Person
 {
+    //This String holds the unique ID for each Person object
     private String ID;
+
+    //This String holds the first name for each Person object
     private String firstName;
+
+    //This String holds the last name for each Person object
     private String lastName;
+
+    //This String holds the title for each Person object
     private String title;
+
+    //This int holds the year of birth for each Person object
     private int YOB;
 
     public Person(String ID, String firstName, String lastName, String title, int YOB)

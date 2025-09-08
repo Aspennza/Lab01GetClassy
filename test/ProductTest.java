@@ -3,9 +3,16 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Tests the basic functionality of the functions in the Product.java class.
+ * @author Zoe Aspenns aspennza@mail.uc.edu
+ */
 class ProductTest {
 
+    //A Product object for testing the functions
     Product product1;
+
+    //A Product object for testing the functions
     Product product2;
 
     @BeforeEach

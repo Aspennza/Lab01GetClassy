@@ -3,9 +3,16 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Tests the basic functionality of the functions in the Person.java class.
+ * @author Zoe Aspenns aspennza@mail.uc.edu
+ */
 class PersonTest {
 
+    //A Person object for testing the functions
     Person person1;
+
+    //A Person object for testing the functions
     Person person2;
 
     @BeforeEach
